@@ -18,8 +18,14 @@ def codage_rle(liste_octets):
 def decodage_rle(liste_rle):
     """Renvoie la liste d'octets obtenue à partir de la liste liste_rle obtenue
     par compression RLE."""
-    pass  # à remplacer par votre code
-
+    res = []
+    i = 0
+    while i < len(liste_rle) - 1:
+        quantite = liste_rle[i]
+        nombre = liste_rle[i+1]
+        res += quantite * [nombre]
+        i += 2
+    return res
 
 def test_codage():
     assert codage_rle([255, 255, 0, 255, 255, 255]) == [2, 255, 1, 0, 3, 255]
