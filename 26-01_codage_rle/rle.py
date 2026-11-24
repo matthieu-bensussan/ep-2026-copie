@@ -24,6 +24,8 @@ def decodage_rle(liste_rle):
 def test_codage():
     assert codage_rle([255, 255, 0, 255, 255, 255]) == [2, 255, 1, 0, 3, 255]
     assert decodage_rle([2, 255, 1, 0, 3, 255]) == [255, 255, 0, 255, 255, 255]
+    assert decodage_rle([3, 4, 1, 0, 2, 5]) == [4, 4, 4, 0, 5, 5]
+    assert decodage_rle([5, 0]) == [0, 0, 0, 0, 0]
 
 
 def enregistrer_octets(nom_fichier, liste_octets):
