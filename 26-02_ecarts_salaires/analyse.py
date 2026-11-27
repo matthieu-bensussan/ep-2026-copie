@@ -7,7 +7,16 @@ def salaire_moyen_condition(employes, champ, valeur):
     """Renvoie le salaire moyen des employes ayant val comme valeur associée
     au champ donné en argument. Si le nombre d'employés considéré est nul,
     cette fonction renvoie None."""
-    pass # à remplacer par votre code
+    somme_salaires_selection = 0
+    nbre_salaires_selection = 0
+    for employe in employes:
+        if employe[champ] == valeur:
+            somme_salaires_selection += employe['salaire']
+            nbre_salaires_selection += 1
+    if nbre_salaires_selection == 0:
+        return None
+    else:
+        return somme_salaires_selection / nbre_salaires_selection
 
 
 def test_salaire_moyen_condition():
@@ -83,3 +92,12 @@ def salaire_par_proximite(employes, e):
     moyennant les 3 plus proches voisins."""
     voisins = k_plus_proches(3, employes, e)
     return salaire_moyen(voisins)
+
+
+# si ce fichier de programme est directement exécuté
+if __name__ == '__main__':
+    e = donnees_completes.employes
+    print('Salaire moyen des femmes :')
+    print(salaire_moyen_condition(e, 'sexe', 'F'))
+    print('Salaire moyen des hommes :')
+    print(salaire_moyen_condition(e, 'sexe', 'M'))
