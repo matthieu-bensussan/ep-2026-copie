@@ -39,7 +39,7 @@ def effectif_par_sexe(employes):
         if employe['sexe'] == 'F':
             # on incrémente l'effectif des femmes.
             res['F'] += 1
-        else: # Si l'employé courant et un homme,
+        else: # Sinon (l'employé courant et un homme),
             # on incrémente l'effectif des hommes.
             res['M'] += 1
     return res
