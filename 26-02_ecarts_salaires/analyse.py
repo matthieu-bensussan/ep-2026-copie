@@ -31,12 +31,24 @@ def effectif_par_sexe(employes):
     """Renvoie un dictionnaire ayant deux clés 'F' et 'M' associée
     respectivement au nombre d'employées femmes et au nombre d'employés hommes
     dans les données en arguments."""
-    pass # à remplacer par votre code
+    # On initialise le dictionnaire résultat avec les effectifs à 0.
+    res = {'F': 0, 'M': 0}
+    # On parcourt la liste de dictionnaires des employés.
+    for employe in employes:
+        # Si l'employé courant est une femme,
+        if employe['sexe'] == 'F':
+            # on incrémente l'effectif des femmes.
+            res['F'] += 1
+        else: # Si l'employé courant et un homme,
+            # on incrémente l'effectif des hommes.
+            res['M'] += 1
+    return res
 
 
 def test_effectif_par_sexe():
     e = donnees.employes
-    assert effectif_par_sexe(e) == { 'F' : 3, 'M' : 3 }
+    assert effectif_par_sexe([]) == {'F': 0, 'M': 0}
+    assert effectif_par_sexe(e) == {'F': 3, 'M': 3}
 
 
 def calcul_ecart_sexe(employes):
@@ -97,6 +109,7 @@ def salaire_par_proximite(employes, e):
 # si ce fichier de programme est directement exécuté
 if __name__ == '__main__':
     e = donnees_completes.employes
+    # question 1.
     print('Salaire moyen des femmes :')
     print(salaire_moyen_condition(e, 'sexe', 'F'))
     print('Salaire moyen des hommes :')
